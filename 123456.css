@@ -1,3 +1,5 @@
+:root 
+      { --button-bg-color: #4CAF50; }
 :root {
     --theme: #280; /* CSS variable */
 }
@@ -30,7 +32,20 @@ h1 {
     left: 0;
     transform: translate(-50%, -50%);
 }
-
+    .button {
+  background-color: var(--button-bg-color); /* Use the CSS variable for background color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s; /* Add smooth transitions */
+}
+.button:hover {
+  background-color: #45a049; /* Darker shade when hovered */
+  transform: scale(1.1); /* Slightly increase size */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
 #mapContainer {
     position: relative;
     display: none;
