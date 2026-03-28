@@ -1,8 +1,5 @@
 :root {
-  --button-bg-color: #4CAF50; /* This defines a green background */
-}
-:root {
-    --theme: #280; /* CSS variable */
+    --theme: #280;
 }
 
 body {
@@ -22,32 +19,34 @@ h1 {
 }
 
 #marker {
-    width: 3vw; /* 3% of the viewport width */
+    width: 3vw;
     height: 3vw;
     background-color: black;
     border-radius: 50%;
-    outline: 5px solid var(--theme); /* does not affect the size */
-    border: 5px solid white; /* affects the size */
+    outline: 5px solid var(--theme);
+    border: 5px solid white;
     position: absolute;
     top: 0;
     left: 0;
     transform: translate(-50%, -50%);
 }
 
-    .button {
-  background-color: var(--button-bg-color); /* Use the CSS variable for background color */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
-  transition: background-color 0.3s, transform 0.2s; /* Add smooth transitions */
+#btn {
+    background-color: var(--theme);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
 }
-.button:hover {
-  background-color: #45a049; /* Darker shade when hovered */
-  transform: scale(1.1); /* Slightly increase size */
-  cursor: pointer; /* Change cursor to pointer on hover */
+
+#btn:hover {
+    background-color: #1f6600;
+    transform: scale(1.1);
+    cursor: pointer;
 }
+
 #mapContainer {
     position: relative;
     display: none;
@@ -56,4 +55,3 @@ h1 {
 #camera {
     width: 100%;
 }
-
