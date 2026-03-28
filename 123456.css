@@ -31,20 +31,39 @@ h1 {
     transform: translate(-50%, -50%);
 }
 
+:root {
+    --theme: #280; /* Original theme color */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+h1 {
+    font-family: "Arial";
+    color: var(--theme);
+}
+
 #btn {
-    background-color: var(--theme);
+    background-color: var(--theme);  /* Button background using CSS variable */
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s, transform 0.2s;
+    padding: 12px 30px;  /* Increased padding for a larger button */
+    font-size: 18px;  /* Slightly bigger text */
+    border-radius: 8px;  /* Rounded corners */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;  /* Transition for smooth effects */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Adding subtle shadow */
 }
 
 #btn:hover {
-    background-color: #1f6600;
-    transform: scale(1.1);
-    cursor: pointer;
+    background-color: #45a049;  /* Darker green on hover */
+    transform: scale(1.1);  /* Slightly enlarge the button */
+    cursor: pointer;  /* Change cursor to pointer */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);  /* Increase the shadow for depth */
+    color: #fff;  /* Ensure text remains white even when hovered */
 }
 
 #mapContainer {
