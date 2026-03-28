@@ -1,9 +1,9 @@
 :root {
-    --theme: #e53935; /* Red color */
+    --theme: #000000; 
 }
 
 #btn {
-    background-color: var(--theme);  /* Red button background */
+    background-color: var(--theme);  /* Black button background */
     color: white;
     border: none;
     padding: 12px 30px;
@@ -14,7 +14,7 @@
 }
 
 #btn:hover {
-    background-color: #c62828;  /* Darker red on hover */
+    background-color: #333333;  /* Dark grey or lighter black on hover */
     transform: scale(1.1);
     cursor: pointer;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
@@ -23,6 +23,6 @@
 
 #btn:active {
     transform: scale(1);  /* Maintain original size on click */
-    background-color: var(--theme);  /* Keep red background */
+    background-color: var(--theme);  /* Keep black background */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
