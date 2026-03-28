@@ -1,75 +1,28 @@
 :root {
     --theme: #e53935; /* Red color */
 }
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-}
-
-h1 {
-    font-family: "Arial";
-    color: var(--theme);
-}
-
-#map {
-    width: 100%;
-}
-
-#marker {
-    width: 3vw;
-    height: 3vw;
-    background-color: black;
-    border-radius: 50%;
-    outline: 5px solid var(--theme);
-    border: 5px solid white;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-}
-
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-}
-
-h1 {
-    font-family: "Arial";
-    color: var(--theme);
-}
 
 #btn {
-    background-color: var(--theme);  /* Button background using CSS variable */
+    background-color: var(--theme);  /* Red button background */
     color: white;
     border: none;
-    padding: 12px 30px;  /* Increased padding for a larger button */
-    font-size: 18px;  /* Slightly bigger text */
-    border-radius: 8px;  /* Rounded corners */
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;  /* Transition for smooth effects */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Adding subtle shadow */
+    padding: 12px 30px;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #btn:hover {
     background-color: #c62828;  /* Darker red on hover */
-    transform: scale(1.1);  /* Slightly enlarge the button */
-    cursor: pointer;  /* Change cursor to pointer */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);  /* Increase the shadow for depth */
-    color: #fff;  /* Ensure text remains white even when hovered */
+    transform: scale(1.1);
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    color: #fff;
 }
 
-#mapContainer {
-    position: relative;
-    display: none;
-}
-
-#camera {
-    width: 100%;
+#btn:active {
+    transform: scale(1);  /* Maintain original size on click */
+    background-color: var(--theme);  /* Keep red background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
