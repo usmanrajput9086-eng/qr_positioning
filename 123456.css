@@ -31,8 +31,6 @@ h1 {
     transform: translate(-50%, -50%);
 }
 
-:root {
-    --theme: #280; /* Original theme color */
 }
 
 body {
