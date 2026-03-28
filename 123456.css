@@ -1,5 +1,6 @@
 :root {
-    --theme: #280;
+    --theme: #e53935; /* Red color */
+}
 }
 
 body {
@@ -57,7 +58,7 @@ h1 {
 }
 
 #btn:hover {
-    background-color: #45a049;  /* Darker green on hover */
+    background-color: #c62828;  /* Darker red on hover */
     transform: scale(1.1);  /* Slightly enlarge the button */
     cursor: pointer;  /* Change cursor to pointer */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);  /* Increase the shadow for depth */
