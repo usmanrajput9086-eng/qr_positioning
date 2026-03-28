@@ -1,5 +1,5 @@
 let scannerOn = false;
-let reader = new Html5Qrcode("camera");  // Initialize the QR code reader with the 'camera' element ID
+let reader = null;  // QR Code reader object
 
 // Toggle the QR code scanner on and off
 function toggleScanner() {
@@ -17,33 +17,48 @@ function toggleScanner() {
 
 // Start the scanner when the button is clicked
 function startScanner() {
-    // Make sure the 'camera' element is present and initialized
-    reader.start(
-        { facingMode: "environment" },  // Use the device camera
-        { },  // Default configuration
-        function (text) {
-            // Parse the scanned JSON data
-            const place = JSON.parse(text);
-
-            // Display the marker at the decoded coordinates
-            showMarkerAt(place.top, place.left);
-
-            // Stop the scanner after a successful scan
-            toggleScanner();
+    // Initialize the QR code reader with the 'qr-reader' element
+    reader = new Html5QrcodeScanner(
+        "qr-reader", {
+            fps: 10,  // Frames per second (smooth scanning)
+            qrbox: 250  // Size of the QR code box
         }
-    ).catch(function (err) {
-        console.error("Error starting the scanner: ", err);  // Log any errors in scanner initialization
-    });
+    );
+
+    // Start scanning with the environment-facing camera
+    reader.render(onScanSuccess, onScanError);
 }
 
-// Stop the scanner
+// Function that runs when the QR code is successfully scanned
+function onScanSuccess(decodedText, decodedResult) {
+    // Parse the JSON data from the QR code
+    const item = JSON.parse(decodedText);
+
+    // Display item details in separate <p> tags
+    displayItemDetails(item);
+
+    // Stop scanning after a successful scan
+    toggleScanner();
+}
+
+// Function that runs when an error occurs during scanning
+function onScanError(errorMessage) {
+    console.error("Error scanning QR code:", errorMessage);
+}
+
+// Function to stop the scanner
 function stopScanner() {
-    reader.stop();  // Stop the QR code reader (camera)
+    reader.clear();  // Clear the scanner
 }
 
-// Function to show the marker on the map (if needed)
-function showMarkerAt(top, left) {
-    const marker = document.getElementById("marker");
-    marker.style.top = top;
-    marker.style.left = left;
+// Function to display item details dynamically
+function displayItemDetails(data) {
+    const nameParagraph = document.getElementById("item-name");
+    const inStockParagraph = document.getElementById("in-stock");
+    const priceParagraph = document.getElementById("price");
+
+    // Update the <p> tags with item details
+    nameParagraph.textContent = "Name: " + data.name;
+    inStockParagraph.textContent = "In Stock: " + (data.inStock ? "Yes" : "No");
+    priceParagraph.textContent = "Price: €" + data.price.toFixed(2);
 }
