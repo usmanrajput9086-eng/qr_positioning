@@ -1,13 +1,6 @@
 let scannerOn = false;
 let reader = null;  // QR Code reader object
 
-// Define the object with the new data
-const qrData = {
-  name: "Rautatieasema",
-  latitude: 62.59995,   // Latitude information
-  longitude: 29.77652   // Longitude information
-};
-
 // Toggle the QR code scanner on and off
 function toggleScanner() {
     scannerOn = !scannerOn;
@@ -38,8 +31,17 @@ function startScanner() {
 
 // Function that runs when the QR code is successfully scanned
 function onScanSuccess(decodedText, decodedResult) {
-    // Display the new static data (latitude and longitude) from the QR code
-    displayItemDetails(qrData);
+    // Parse the decoded text (assumed to be JSON formatted)
+    let data;
+    try {
+        data = JSON.parse(decodedText);  // Parse the scanned QR code text as JSON
+    } catch (error) {
+        console.error("Failed to parse QR data:", error);
+        return;
+    }
+
+    // Display the new dynamic data from the QR code
+    displayItemDetails(data);
 
     // Stop scanning after a successful scan
     toggleScanner();
