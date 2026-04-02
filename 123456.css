@@ -4,7 +4,7 @@
 
 #btn {
     background-color: var(--theme);  /* Black button background */
-    color: white;
+    color: red;
     border: none;
     padding: 12px 30px;
     font-size: 18px;
