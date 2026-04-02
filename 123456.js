@@ -6,11 +6,9 @@ function toggleScanner() {
     scannerOn = !scannerOn;
     if (scannerOn) {
         startScanner();  // Start scanning
-        mapContainer.style.display = "none";  // Hide map container when scanning
         btn.innerText = "CANCEL";  // Change button text to 'CANCEL'
     } else {
         stopScanner();  // Stop scanning
-        mapContainer.style.display = "block";  // Show map container when not scanning
         btn.innerText = "SCAN";  // Change button text back to 'SCAN'
     }
 }
@@ -31,10 +29,12 @@ function startScanner() {
 
 // Function that runs when the QR code is successfully scanned
 function onScanSuccess(decodedText, decodedResult) {
+    console.log("QR Code scanned successfully:", decodedText); // Log to ensure it's scanning
     // Parse the decoded text (assumed to be JSON formatted)
     let data;
     try {
         data = JSON.parse(decodedText);  // Parse the scanned QR code text as JSON
+        console.log("Decoded Data:", data); // Log parsed data
     } catch (error) {
         console.error("Failed to parse QR data:", error);
         return;
@@ -54,7 +54,9 @@ function onScanError(errorMessage) {
 
 // Function to stop the scanner
 function stopScanner() {
-    reader.clear();  // Clear the scanner
+    if (reader) {
+        reader.clear();  // Clear the scanner
+    }
 }
 
 // Function to display item details dynamically
