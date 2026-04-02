@@ -1,6 +1,13 @@
 let scannerOn = false;
 let reader = null;  // QR Code reader object
 
+// Define the object with the new data
+const qrData = {
+  name: "Rautatieasema",
+  latitude: 62.59995,   // Latitude information
+  longitude: 29.77652   // Longitude information
+};
+
 // Toggle the QR code scanner on and off
 function toggleScanner() {
     scannerOn = !scannerOn;
@@ -31,11 +38,8 @@ function startScanner() {
 
 // Function that runs when the QR code is successfully scanned
 function onScanSuccess(decodedText, decodedResult) {
-    // Parse the JSON data from the QR code
-    const item = JSON.parse(decodedText);
-
-    // Display item details in separate <p> tags
-    displayItemDetails(item);
+    // Display the new static data (latitude and longitude) from the QR code
+    displayItemDetails(qrData);
 
     // Stop scanning after a successful scan
     toggleScanner();
@@ -54,11 +58,11 @@ function stopScanner() {
 // Function to display item details dynamically
 function displayItemDetails(data) {
     const nameParagraph = document.getElementById("item-name");
-    const inStockParagraph = document.getElementById("in-stock");
-    const priceParagraph = document.getElementById("price");
+    const latitudeParagraph = document.getElementById("in-stock"); // Replacing "In Stock" with Latitude
+    const longitudeParagraph = document.getElementById("price");  // Replacing "Price" with Longitude
 
     // Update the <p> tags with item details
     nameParagraph.textContent = "Name: " + data.name;
-    inStockParagraph.textContent = "In Stock: " + (data.inStock ? "Yes" : "No");
-    priceParagraph.textContent = "Price: €" + data.price.toFixed(2);
+    latitudeParagraph.textContent = "Latitude: " + data.latitude;
+    longitudeParagraph.textContent = "Longitude: " + data.longitude;
 }
